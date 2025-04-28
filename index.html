@@ -22,18 +22,28 @@
 
     h1 {
       font-size: 40px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       animation: typing 3s steps(30) 1s 1 normal both;
+    }
+
+    .pixel-art {
+      font-family: monospace;
+      white-space: pre;
+      line-height: 10px;
+      font-size: 8px;
+      margin-bottom: 20px;
+      color: #00FF00;
     }
 
     .question { 
       margin-bottom: 20px;
-      opacity: 0; /* Inicialmente oculto */
-      transform: translateY(-20px); /* Desplazamiento inicial hacia arriba */
+      opacity: 0;
+      transform: translateY(-20px);
       animation: fadeIn 1s forwards;
     }
 
     .hidden { display: none; }
+
     button { 
       margin-top: 20px; 
       padding: 10px 20px; 
@@ -59,19 +69,16 @@
       display: inline-block;
     }
 
-    /* Animación de escritura estilo Matrix */
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
     }
 
-    /* Animación de aparición de las preguntas */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animación tipo typing para las preguntas */
     @keyframes questionTyping {
       from { width: 0; }
       to { width: 100%; }
@@ -88,7 +95,6 @@
       animation: typing 3s steps(30) 1s 1 normal both;
     }
 
-    /* Diseño responsivo para evitar solapamientos */
     @media (min-width: 768px) {
       body {
         justify-content: flex-start;
@@ -105,7 +111,6 @@
       }
     }
 
-    /* Para móviles */
     @media (max-width: 767px) {
       h1 {
         font-size: 30px;
@@ -120,6 +125,23 @@
 </head>
 <body>
   <h1>Trivia Challenge</h1>
+
+  <!-- Pixel Art de Donald Trump -->
+  <div class="pixel-art">
+"
+TTTTTTT  SSSSS  M     M   CCCCC
+T    S        MM   MM  C
+T    SSSSS    M M M M  C
+T        S    M  M  M  C
+T    SSSSS    M     M   CCCCC
+
+         .------------------.
+         | 🇹🇼 🇹🇼 🇹🇼 🇹🇼 🇹🇼 |
+         | 🇹🇼 🇹🇼 🇹🇼 🇹🇼 🇹🇼 |
+         | 🇹🇼 🇹🇼 🇹🇼 🇹🇼 🇹🇼 |
+         '------------------'
+"
+  </div>
 
   <!-- Introducción al juego -->
   <div id="lore">
@@ -165,7 +187,7 @@
     const loreDiv = document.getElementById("lore");
 
     function shuffleQuestions() {
-      return questions.sort(() => Math.random() - 0.5); // Mezcla las preguntas
+      return questions.sort(() => Math.random() - 0.5);
     }
 
     function getRandomChineseCharacters() {
@@ -185,7 +207,7 @@
         q.options.map((opt, i) => `
           <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
         `).join("") +
-        `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`; // Mostrar caracteres chinos aleatorios
+        `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`;
       quizDiv.appendChild(div);
 
       nextBtn.disabled = true;
@@ -234,16 +256,15 @@
     }
 
     function startQuiz() {
-      // Ocultamos el lore y el botón de inicio
       loreDiv.classList.add("hidden");
       startBtn.classList.add("hidden");
       quizDiv.classList.remove("hidden");
       nextBtn.classList.remove("hidden");
 
-      // Iniciamos el cuestionario con las preguntas mezcladas
       shuffledQuestions = shuffleQuestions();
       showQuestion(currentQuestionIndex);
     }
   </script>
 </body>
 </html>
+
