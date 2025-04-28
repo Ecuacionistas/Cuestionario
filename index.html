@@ -17,38 +17,24 @@
       height: 100vh;
       text-align: center;
       margin: 0;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 40px;
       margin-bottom: 30px;
-      animation: typing 3s steps(40) 1s 1 normal both;
+      animation: typing 3s steps(30) 1s 1 normal both;
     }
 
-    #lore {
-      font-size: 18px;
-      margin-bottom: 40px;
-      text-align: justify;
-      width: 80%;
-      margin: 20px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    #quiz { 
-      opacity: 0;
-      transition: opacity 1s ease-in;
-      margin-top: 30px;
-    }
-
-    .question {
+    .question { 
       margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(-20px);
+      opacity: 0; /* Inicialmente oculto */
+      transform: translateY(-20px); /* Desplazamiento inicial hacia arriba */
       animation: fadeIn 1s forwards;
     }
 
-    button {
+    .hidden { display: none; }
+    button { 
       margin-top: 20px; 
       padding: 10px 20px; 
       font-size: 16px; 
@@ -56,7 +42,6 @@
       border: 2px solid #00FF00; 
       background-color: #000000;
       font-family: "Digital-7", monospace;
-      cursor: pointer;
     }
 
     .result { 
@@ -65,8 +50,6 @@
       font-weight: bold; 
       color: #00FF00; 
     }
-
-    .hidden { display: none; }
 
     /* Animación de escritura estilo Matrix */
     @keyframes typing {
@@ -79,11 +62,23 @@
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
+    #lore {
+      font-size: 18px;
+      margin-bottom: 40px;
+      text-align: justify;
+      width: 80%;
+      margin: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
   </style>
 </head>
 <body>
   <h1>Trivia Challenge</h1>
 
+  <!-- Introducción al juego -->
   <div id="lore">
     <p><strong>Introducción al juego:</strong></p>
     <p>Un devastador terremoto ha golpeado Taiwán, causando una catástrofe que afectó gravemente la producción de microchips en todo el país. La cadena de suministro de semiconductores se ha visto severamente interrumpida, lo que ha generado una caída del 50% en la producción global. Las fábricas, en su mayoría en Taiwán, están en ruinas, y los líderes industriales están luchando por recuperar el control.</p>
