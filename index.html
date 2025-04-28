@@ -79,6 +79,8 @@
       width: 80%;
       margin: 20px;
       animation: typing 4s steps(50) 1s 1 normal both;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
   </style>
@@ -86,6 +88,7 @@
 <body>
   <h1>Trivia Challenge</h1>
 
+  <!-- Introducción al juego -->
   <div id="lore">
     <p><strong>Introducción al juego:</strong></p>
     <p>Un devastador terremoto ha golpeado Taiwán, causando una catástrofe que afectó gravemente la producción de microchips en todo el país. La cadena de suministro de semiconductores se ha visto severamente interrumpida, lo que ha generado una caída del 50% en la producción global. Las fábricas, en su mayoría en Taiwán, están en ruinas, y los líderes industriales están luchando por recuperar el control.</p>
@@ -94,14 +97,15 @@
     <p>¡El destino de la industria tecnológica está en tus manos! ¿Estás listo para enfrentar este desafío?</p>
   </div>
 
+  <!-- Botón para iniciar el cuestionario -->
   <button id="startBtn" onclick="startQuiz()">Iniciar Cuestionario</button>
 
+  <!-- Cuestionario y Resultados -->
   <div id="quiz" class="hidden"></div>
-
   <button id="nextBtn" onclick="nextQuestion()" class="hidden">Siguiente pregunta</button>
-
   <div id="result" class="result hidden"></div>
 
+  <!-- Caracteres chinos -->
   <div id="chinese-characters" class="chinese-characters"></div>
 
   <script>
@@ -211,3 +215,4 @@
   </script>
 </body>
 </html>
+
