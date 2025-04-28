@@ -6,10 +6,10 @@
   <title>Trivia Challenge</title>
   <style>
     body { 
-      font-family: "Digital-7", monospace; /* Fuente estilo Matrix */
+      font-family: "Digital-7", monospace; 
       padding: 20px; 
-      background: #000000; /* Fondo negro */
-      color: #00FF00; /* Texto verde */
+      background: #000000;
+      color: #00FF00; 
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -23,14 +23,14 @@
     h1 {
       font-size: 40px;
       margin-bottom: 30px;
-      animation: typing 3s steps(30) 1s 1 normal both; /* Animación de escritura para el título */
+      animation: typing 3s steps(30) 1s 1 normal both;
     }
 
     .question { 
       margin-bottom: 20px;
       opacity: 0; /* Inicialmente oculto */
       transform: translateY(-20px); /* Desplazamiento inicial hacia arriba */
-      animation: typing 3s steps(40) 1s 1 normal both, fadeIn 1s forwards; /* Animación tipo escritura */
+      animation: fadeIn 1s forwards;
     }
 
     .hidden { display: none; }
@@ -42,7 +42,6 @@
       border: 2px solid #00FF00; 
       background-color: #000000;
       font-family: "Digital-7", monospace;
-      animation: typing 3s steps(30) 1s 1 normal both; /* Animación de escritura en el botón */
     }
 
     .result { 
@@ -56,7 +55,6 @@
       font-size: 24px;
       margin-top: 20px;
       color: #00FF00;
-      animation: fadeIn 5s infinite; /* Animación para los caracteres chinos */
     }
 
     /* Animación de escritura estilo Matrix */
@@ -65,23 +63,20 @@
       to { width: 100%; }
     }
 
-    /* Animación de aparición de las preguntas estilo Matrix */
+    /* Animación de aparición de las preguntas */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Estilo para el lore */
     #lore {
       font-size: 18px;
       margin-bottom: 40px;
       text-align: justify;
       width: 80%;
       margin: 20px;
-      animation: typing 4s steps(50) 1s 1 normal both;
       white-space: nowrap;
       overflow: hidden;
-      visibility: visible; /* Asegurarse de que el lore sea visible */
     }
 
   </style>
@@ -106,9 +101,6 @@
   <button id="nextBtn" onclick="nextQuestion()" class="hidden">Siguiente pregunta</button>
   <div id="result" class="result hidden"></div>
 
-  <!-- Caracteres chinos -->
-  <div id="chinese-characters" class="chinese-characters"></div>
-
   <script>
     const questions = [
       { q: "¿Capital de Argentina?", options: ["Buenos Aires", "Córdoba", "Rosario"], answer: 0 },
@@ -123,33 +115,21 @@
       { q: "¿Metal precioso?", options: ["Plomo", "Oro", "Hierro"], answer: 1 },
     ];
 
-    const chineseTexts = [
-      "你好吗？", "学习是重要的。", "你好，世界！", "这是一个挑战！", "我喜欢编程。",
-      "今天是个好日子。", "你吃了吗？", "我在学习中文。", "我正在开发一个网页。",
-      "编程是有趣的！"
-    ];
-
     let currentQuestionIndex = 0;
     let answers = [];
 
     const quizDiv = document.getElementById("quiz");
     const nextBtn = document.getElementById("nextBtn");
     const startBtn = document.getElementById("startBtn");
-    const chineseDiv = document.getElementById("chinese-characters");
     const resultDiv = document.getElementById("result");
     const loreDiv = document.getElementById("lore");
-
-    function showRandomChinese() {
-      const randomChineseText = chineseTexts[Math.floor(Math.random() * chineseTexts.length)];
-      chineseDiv.innerHTML = randomChineseText;
-    }
 
     function shuffleQuestions() {
       return questions.sort(() => Math.random() - 0.5); // Mezcla las preguntas
     }
 
     function showQuestion(index) {
-      quizDiv.innerHTML = '';
+      quizDiv.innerHTML = ''; 
       const q = shuffledQuestions[index];
       const div = document.createElement("div");
       div.className = "question";
@@ -205,15 +185,17 @@
     }
 
     function startQuiz() {
+      // Ocultamos el lore y el botón de inicio
       loreDiv.classList.add("hidden");
       startBtn.classList.add("hidden");
       quizDiv.classList.remove("hidden");
       nextBtn.classList.remove("hidden");
 
-      showRandomChinese();
+      // Iniciamos el cuestionario con las preguntas mezcladas
       const shuffledQuestions = shuffleQuestions();
       showQuestion(currentQuestionIndex);
     }
   </script>
 </body>
 </html>
+
