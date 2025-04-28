@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Challenge</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      background: #000000; /* Fondo negro */
+      color: #00FF00; /* Texto verde */
+    }
+    .question { margin-bottom: 20px; }
+    .hidden { display: none; }
+    button { 
+      margin-top: 20px; 
+      padding: 10px 20px; 
+      font-size: 16px; 
+      color: #00FF00; 
+      border: 2px solid #00FF00; 
+      background-color: #000000;
+    }
+    .result { 
+      margin-top: 20px; 
+      font-size: 20px; 
+      font-weight: bold; 
+      color: #00FF00; 
+    }
+    /* Agregar algunos caracteres chinos al azar */
+    .chinese-characters {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #00FF00;
+    }
+  </style>
+</head>
+<body>
+  <h1>Trivia Challenge</h1>
+
+  <div id="quiz"></div>
+
+  <button id="nextBtn" onclick="nextQuestion()" disabled>Siguiente pregunta</button>
+
+  <div id="result" class="result"></div>
+
+  <div class="chinese-characters">
+    <!-- Algunos caracteres chinos aleatorios -->
+    你好吗？ 学习是重要的。 你好，世界！ 这是一个挑战！
+  </div>
+
+  <script>
+    const questions = [
+      { q: "¿Capital de Argentina?", options: ["Buenos Aires", "Córdoba", "Rosario"], answer: 0 },
+      { q: "¿2 + 2?", options: ["3", "4", "5"], answer: 1 },
+      { q: "¿Color primario?", options: ["Verde", "Azul", "Naranja"], answer: 1 },
+      { q: "¿Animal que vuela?", options: ["Gato", "Águila", "Caballo"], answer: 1 },
+      { q: "¿Océano más grande?", options: ["Atlántico", "Índico", "Pacífico"], answer: 2 },
+      { q: "¿Número primo?", options: ["9", "7", "15"], answer: 1 },
+      { q: "¿Idioma de Brasil?", options: ["Español", "Portugués", "Inglés"], answer: 1 },
+      { q: "¿Planeta rojo?", options: ["Marte", "Júpiter", "Saturno"], answer: 0 },
+      { q: "¿Instrumento musical?", options: ["Piano", "Reloj", "Silla"], answer: 0 },
+      { q: "¿Metal precioso?", options: ["Plomo", "Oro", "Hierro"], answer: 1 },
+    ];
+
+    let currentQuestionIndex = 0;
+    let answers = [];
+
+    const quizDiv = document.getElementById("quiz");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function showQuestion(index) {
+      // Limpiar la pregunta anterior
+      quizDiv.innerHTML = '';
+      
+      const q = questions[index];
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p>${index + 1}. ${q.q}</p>` +
+        q.options.map((opt, i) => `
+          <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
+        `).join("");
+      quizDiv.appendChild(div);
+
+      // Deshabilitar el botón por defecto
+      nextBtn.disabled = true;
+
+      // Agregar un evento para habilitar el botón cuando se elige una respuesta
+      const radios = document.getElementsByName(`q${index}`);
+      radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          nextBtn.disabled = false; // Habilitar el botón
+        });
+      });
+    }
+
+    function nextQuestion() {
+      // Guardar la respuesta de la pregunta actual
+      const selected = document.querySelector(`input[name="q${currentQuestionIndex}"]:checked`);
+      if (selected) {
+        answers[currentQuestionIndex] = parseInt(selected.value); // Guardar la respuesta
+      }
+      
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < questions.length) {
+        showQuestion(currentQuestionIndex);
+      } else {
+        // Ya no hay más preguntas, mostrar resultados
+        showResult();
+      }
+    }
+
+    function showResult() {
+      let correct = 0;
+      questions.forEach((q, index) => {
+        if (answers[index] === q.answer) {
+          correct++;
+        }
+      });
+      const resultDiv = document.getElementById("result");
+      if (correct >= 7) {
+        resultDiv.innerHTML = `✨ ¡Felicitaciones! Tu contraseña es: <strong>PREMIO2025</strong>`;
+      } else {
+        resultDiv.innerHTML = `❌ Lo siento, necesitas al menos 7 respuestas correctas. Intentá de nuevo.`;
+      }
+    }
+
+    // Mostrar la primera pregunta
+    showQuestion(currentQuestionIndex);
+  </script>
+</body>
+</html>
