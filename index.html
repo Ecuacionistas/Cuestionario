@@ -81,6 +81,7 @@
       animation: typing 4s steps(50) 1s 1 normal both;
       white-space: nowrap;
       overflow: hidden;
+      visibility: visible; /* Asegurarse de que el lore sea visible */
     }
 
   </style>
@@ -200,6 +201,7 @@
       } else {
         resultDiv.innerHTML = `❌ Lo siento, necesitas al menos 7 respuestas correctas. Intentá de nuevo.`;
       }
+      resultDiv.classList.remove("hidden");
     }
 
     function startQuiz() {
@@ -215,4 +217,3 @@
   </script>
 </body>
 </html>
-
