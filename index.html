@@ -20,11 +20,17 @@
       overflow: hidden;
     }
 
+    h1 {
+      font-size: 40px;
+      margin-bottom: 30px;
+      animation: typing 3s steps(30) 1s 1 normal both; /* Animación de escritura para el título */
+    }
+
     .question { 
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
       opacity: 0; /* Inicialmente oculto */
       transform: translateY(-20px); /* Desplazamiento inicial hacia arriba */
-      transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Animación */
+      animation: typing 3s steps(40) 1s 1 normal both, fadeIn 1s forwards; /* Animación tipo escritura */
     }
 
     .hidden { display: none; }
@@ -36,6 +42,7 @@
       border: 2px solid #00FF00; 
       background-color: #000000;
       font-family: "Digital-7", monospace;
+      animation: typing 3s steps(30) 1s 1 normal both; /* Animación de escritura en el botón */
     }
 
     .result { 
@@ -52,10 +59,26 @@
       animation: fadeIn 5s infinite; /* Animación para los caracteres chinos */
     }
 
+    /* Animación de escritura estilo Matrix */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
     /* Animación de aparición de las preguntas estilo Matrix */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Estilo para el lore */
+    #lore {
+      font-size: 18px;
+      margin-bottom: 40px;
+      text-align: justify;
+      width: 80%;
+      margin: 20px;
+      animation: typing 4s steps(50) 1s 1 normal both;
     }
 
   </style>
@@ -63,11 +86,21 @@
 <body>
   <h1>Trivia Challenge</h1>
 
-  <div id="quiz"></div>
+  <div id="lore">
+    <p><strong>Introducción al juego:</strong></p>
+    <p>Un devastador terremoto ha golpeado Taiwán, causando una catástrofe que afectó gravemente la producción de microchips en todo el país. La cadena de suministro de semiconductores se ha visto severamente interrumpida, lo que ha generado una caída del 50% en la producción global. Las fábricas, en su mayoría en Taiwán, están en ruinas, y los líderes industriales están luchando por recuperar el control.</p>
+    <p>En medio de este caos, la gigante TSMC (Taiwan Semiconductor Manufacturing Company), conocida por ser uno de los principales productores de microchips del mundo, se encuentra en una posición vulnerable. Sus sistemas están inactivos, y la seguridad está comprometida. La única oportunidad de tomar el control de la empresa recae en tus manos.</p>
+    <p>Tu misión es hackear los sistemas de TSMC aprovechando la vulnerabilidad creada por el desastre. Para ello, deberás demostrar tus conocimientos sobre microchips, tecnología, y las tensiones entre Taiwán, China y Estados Unidos. Solo superando este cuestionario podrás obtener la clave para acceder a los sistemas críticos de la empresa.</p>
+    <p>¡El destino de la industria tecnológica está en tus manos! ¿Estás listo para enfrentar este desafío?</p>
+  </div>
 
-  <button id="nextBtn" onclick="nextQuestion()" disabled>Siguiente pregunta</button>
+  <button id="startBtn" onclick="startQuiz()">Iniciar Cuestionario</button>
 
-  <div id="result" class="result"></div>
+  <div id="quiz" class="hidden"></div>
+
+  <button id="nextBtn" onclick="nextQuestion()" class="hidden">Siguiente pregunta</button>
+
+  <div id="result" class="result hidden"></div>
 
   <div id="chinese-characters" class="chinese-characters"></div>
 
@@ -96,7 +129,10 @@
 
     const quizDiv = document.getElementById("quiz");
     const nextBtn = document.getElementById("nextBtn");
+    const startBtn = document.getElementById("startBtn");
     const chineseDiv = document.getElementById("chinese-characters");
+    const resultDiv = document.getElementById("result");
+    const loreDiv = document.getElementById("lore");
 
     function showRandomChinese() {
       const randomChineseText = chineseTexts[Math.floor(Math.random() * chineseTexts.length)];
@@ -108,9 +144,7 @@
     }
 
     function showQuestion(index) {
-      // Limpiar la pregunta anterior
       quizDiv.innerHTML = '';
-      
       const q = shuffledQuestions[index];
       const div = document.createElement("div");
       div.className = "question";
@@ -120,29 +154,25 @@
         `).join("");
       quizDiv.appendChild(div);
 
-      // Deshabilitar el botón por defecto
       nextBtn.disabled = true;
 
-      // Agregar un evento para habilitar el botón cuando se elige una respuesta
       const radios = document.getElementsByName(`q${index}`);
       radios.forEach(radio => {
         radio.addEventListener('change', () => {
-          nextBtn.disabled = false; // Habilitar el botón
+          nextBtn.disabled = false;
         });
       });
 
-      // Esperar 3 segundos antes de mostrar la siguiente pregunta
       setTimeout(() => {
-        div.style.opacity = 1; // Mostrar la pregunta con animación
-        div.style.transform = 'translateY(0)'; // Finalizar el desplazamiento
+        div.style.opacity = 1;
+        div.style.transform = 'translateY(0)';
       }, 300);
     }
 
     function nextQuestion() {
-      // Guardar la respuesta de la pregunta actual
       const selected = document.querySelector(`input[name="q${currentQuestionIndex}"]:checked`);
       if (selected) {
-        answers[currentQuestionIndex] = parseInt(selected.value); // Guardar la respuesta
+        answers[currentQuestionIndex] = parseInt(selected.value);
       }
       
       currentQuestionIndex++;
@@ -150,7 +180,6 @@
       if (currentQuestionIndex < shuffledQuestions.length) {
         showQuestion(currentQuestionIndex);
       } else {
-        // Ya no hay más preguntas, mostrar resultados
         showResult();
       }
     }
@@ -162,7 +191,6 @@
           correct++;
         }
       });
-      const resultDiv = document.getElementById("result");
       if (correct >= 7) {
         resultDiv.innerHTML = `✨ ¡Felicitaciones! Tu contraseña es: <strong>PREMIO2025</strong>`;
       } else {
@@ -170,12 +198,16 @@
       }
     }
 
-    // Iniciar el cuestionario con las preguntas mezcladas
-    const shuffledQuestions = shuffleQuestions();
-    showRandomChinese(); // Mostrar caracteres chinos aleatorios al inicio
-    showQuestion(currentQuestionIndex);
+    function startQuiz() {
+      loreDiv.classList.add("hidden");
+      startBtn.classList.add("hidden");
+      quizDiv.classList.remove("hidden");
+      nextBtn.classList.remove("hidden");
+
+      showRandomChinese();
+      const shuffledQuestions = shuffleQuestions();
+      showQuestion(currentQuestionIndex);
+    }
   </script>
 </body>
 </html>
-
-
