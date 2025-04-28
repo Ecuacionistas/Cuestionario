@@ -12,7 +12,7 @@
       color: #00FF00; 
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       height: 100vh;
       text-align: center;
@@ -22,7 +22,7 @@
 
     h1 {
       font-size: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       animation: typing 3s steps(30) 1s 1 normal both;
     }
 
@@ -42,6 +42,7 @@
       border: 2px solid #00FF00; 
       background-color: #000000;
       font-family: "Digital-7", monospace;
+      cursor: pointer;
     }
 
     .result { 
@@ -49,6 +50,13 @@
       font-size: 20px; 
       font-weight: bold; 
       color: #00FF00; 
+    }
+
+    .chinese-characters {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #00FF00;
+      display: inline-block;
     }
 
     /* Animación de escritura estilo Matrix */
@@ -71,8 +79,37 @@
       margin: 20px;
       white-space: nowrap;
       overflow: hidden;
+      animation: typing 3s steps(30) 1s 1 normal both;
     }
 
+    /* Diseño responsivo para evitar solapamientos */
+    @media (min-width: 768px) {
+      body {
+        justify-content: flex-start;
+        align-items: center;
+        height: auto;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 40px;
+      }
+      #quiz {
+        width: 50%;
+        margin-top: 40px;
+      }
+    }
+
+    /* Para móviles */
+    @media (max-width: 767px) {
+      h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+      #quiz {
+        width: 80%;
+        margin-top: 40px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -109,6 +146,8 @@
       { q: "¿Metal precioso?", options: ["Plomo", "Oro", "Hierro"], answer: 1 },
     ];
 
+    const chineseCharacters = ["台灣", "中國", "美國", "半導體", "電子", "科技", "革命", "創新", "未來", "世界"];
+
     let currentQuestionIndex = 0;
     let answers = [];
     let shuffledQuestions;
@@ -123,6 +162,11 @@
       return questions.sort(() => Math.random() - 0.5); // Mezcla las preguntas
     }
 
+    function getRandomChineseCharacters() {
+      const randomIndex = Math.floor(Math.random() * chineseCharacters.length);
+      return chineseCharacters[randomIndex];
+    }
+
     function showQuestion(index) {
       quizDiv.innerHTML = ''; 
       const q = shuffledQuestions[index];
@@ -131,7 +175,8 @@
       div.innerHTML = `<p>${index + 1}. ${q.q}</p>` +
         q.options.map((opt, i) => `
           <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
-        `).join("");
+        `).join("") +
+        `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`; // Mostrar caracteres chinos aleatorios
       quizDiv.appendChild(div);
 
       nextBtn.disabled = true;
