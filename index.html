@@ -162,31 +162,33 @@ T        S    M  M  M  C
 
   <script>
     const questions = [
-{ q: "¿Qué país domina la producción de chips avanzados?", options: ["China", "Japón", "Estados Unidos", "Taiwán"], answer: 3 },
-{ q: "¿Qué empresa es líder mundial en fabricación de microchips?", options: ["Intel", "Samsung", "TSMC", "Huawei"], answer: 2 },
-{ q: "¿Qué porcentaje de los chips más avanzados produce Taiwán aproximadamente?", options: ["10%", "50%", "90%", "30%"], answer: 2 },
-{ q: "¿Cuál es el principal temor de EE.UU. respecto a Taiwán?", options: ["Competencia agrícola", "Desabastecimiento de chips", "Turismo masivo", "Sanciones diplomáticas"], answer: 1 },
-{ q: "¿Qué actor impulsa el desarrollo de la industria de semiconductores en China?", options: ["Alibaba", "Gobierno chino", "Xiaomi", "Tencent"], answer: 1 },
-{ q: "¿Qué significa 'foundry' en el contexto de chips?", options: ["Diseñador de software", "Fábrica que diseña y fabrica chips", "Fábrica que solo fabrica chips para terceros", "Empresa de energías renovables"], answer: 2 },
-{ q: "¿Qué conflicto agrava la preocupación por los microchips?", options: ["Guerra comercial EE.UU.-China", "Brexit", "Cambio climático", "Deuda externa"], answer: 0 },
-{ q: "¿Qué tipo de chips fabrica TSMC?", options: ["Chips para impresoras", "Chips de baja tecnología", "Chips de alta tecnología", "Chips militares exclusivamente"], answer: 2 },
-{ q: "¿Qué empresa estadounidense depende de los chips de TSMC?", options: ["Meta", "Tesla", "Apple", "Netflix"], answer: 2 },
-{ q: "¿Cuál es la estrategia de EE.UU. para reducir su dependencia?", options: ["Exportar más petróleo", "Nacionalizar TSMC", "Invertir en producción local de chips", "Prohibir el uso de chips"], answer: 2 },
-{ q: "¿Dónde está ubicada TSMC?", options: ["Beijing", "Seúl", "Taipei", "Shanghai"], answer: 2 },
-{ q: "¿Qué país considera estratégicos los chips para su seguridad nacional?", options: ["México", "Australia", "Estados Unidos", "Canadá"], answer: 2 },
+      
+{ q: "¿Qué país domina<br>la producción de chips<br>avanzados?", options: ["China", "Japón", "Estados Unidos", "Taiwán"], answer: 3 },
+{ q: "¿Qué empresa es líder<br>mundial en fabricación<br>de microchips?", options: ["Intel", "Samsung", "TSMC", "Huawei"], answer: 2 },
+{ q: "¿Qué porcentaje de los chips<br>más avanzados produce<br>Taiwán aproximadamente?", options: ["10%", "50%", "90%", "30%"], answer: 2 },
+{ q: "¿Cuál es el principal temor<br>de EE.UU. respecto<br>a Taiwán?", options: ["Competencia agrícola", "Desabastecimiento de chips", "Turismo masivo", "Sanciones diplomáticas"], answer: 1 },
+{ q: "¿Qué actor impulsa<br>el desarrollo de la industria<br>de semiconductores en China?", options: ["Alibaba", "Gobierno chino", "Xiaomi", "Tencent"], answer: 1 },
+{ q: "¿Qué significa 'foundry'<br>en el contexto<br>de chips?", options: ["Diseñador de software", "Fábrica que diseña y fabrica chips", "Fábrica que solo fabrica chips para terceros", "Empresa de energías renovables"], answer: 2 },
+{ q: "¿Qué conflicto agrava<br>la preocupación<br>por los microchips?", options: ["Guerra comercial EE.UU.-China", "Brexit", "Cambio climático", "Deuda externa"], answer: 0 },
+{ q: "¿Qué tipo de chips<br>fabrica TSMC?", options: ["Chips para impresoras", "Chips de baja tecnología", "Chips de alta tecnología", "Chips militares exclusivamente"], answer: 2 },
+{ q: "¿Qué empresa estadounidense<br>depende de los<br>chips de TSMC?", options: ["Meta", "Tesla", "Apple", "Netflix"], answer: 2 },
+{ q: "¿Cuál es la estrategia<br>de EE.UU. para reducir<br>su dependencia?", options: ["Exportar más petróleo", "Nacionalizar TSMC", "Invertir en producción local de chips", "Prohibir el uso de chips"], answer: 2 },
+{ q: "¿Dónde está<br>ubicada TSMC?", options: ["Beijing", "Seúl", "Taipei", "Shanghai"], answer: 2 },
+{ q: "¿Qué país considera<br>estratégicos los chips<br>para su seguridad nacional?", options: ["México", "Australia", "Estados Unidos", "Canadá"], answer: 2 },
 { q: "¿Qué significa 'fabless'?", options: ["Compañía sin empleados", "Compañía que diseña pero no fabrica chips", "Compañía de reciclaje", "Compañía textil"], answer: 1 },
-{ q: "¿Cuál es el principal objetivo de China respecto a los chips?", options: ["Incrementar exportaciones de frutas", "Lograr autosuficiencia tecnológica", "Mejorar la agricultura", "Aumentar el turismo"], answer: 1 },
-{ q: "¿Qué empresa norteamericana también fabrica chips?", options: ["Ford", "Boeing", "Intel", "Twitter"], answer: 2 },
-{ q: "¿Qué estrategia busca fortalecer EE.UU. en su territorio?", options: ["Turismo", "Fabricación local de semiconductores", "Agricultura sostenible", "Producción de acero"], answer: 1 },
-{ q: "¿Por qué los chips son considerados 'el nuevo petróleo'?", options: ["Son inflamables", "Son escasos y críticos para la economía moderna", "Son muy baratos", "Se utilizan en la industria textil"], answer: 1 },
-{ q: "¿Qué suceso puede afectar gravemente la producción mundial de chips?", options: ["Caída de Facebook", "Invasión de Taiwán", "Cierre de Wall Street", "Crisis del euro"], answer: 1 },
-{ q: "¿Qué empresa de EE.UU. es clave en diseño de chips pero no en fabricación?", options: ["NVIDIA", "General Motors", "Amazon", "Walmart"], answer: 0 },
-{ q: "¿Qué infraestructura natural hace vulnerable a Taiwán?", options: ["Zonas volcánicas", "Sequías", "Terremotos", "Tornados"], answer: 2 },
-{ q: "¿Cuál es uno de los materiales críticos en la producción de chips?", options: ["Litio", "Silicio", "Cobre", "Hierro"], answer: 1 },
-{ q: "¿Qué política impulsa EE.UU. para la industria de chips?", options: ["Ley de Chips", "Green New Deal", "Ley de Internet Seguro", "Patriot Act"], answer: 0 },
-{ q: "¿Qué industria depende fuertemente de los semiconductores?", options: ["Textil", "Automotriz", "Agricultura", "Construcción"], answer: 1 },
-{ q: "¿Qué país invierte grandes sumas en fábricas de chips locales, aparte de EE.UU.?", options: ["Alemania", "Brasil", "Sudáfrica", "Perú"], answer: 0 },
-{ q: "¿Qué factor agrava la 'guerra de los chips'?", options: ["Cambio climático", "Aumento del consumo global de dispositivos electrónicos", "Caída del petróleo", "Crisis migratoria"], answer: 1 }
+{ q: "¿Cuál es el principal objetivo<br>de China respecto<br>a los chips?", options: ["Incrementar exportaciones de frutas", "Lograr autosuficiencia tecnológica", "Mejorar la agricultura", "Aumentar el turismo"], answer: 1 },
+{ q: "¿Qué empresa norteamericana<br>también fabrica<br>chips?", options: ["Ford", "Boeing", "Intel", "Twitter"], answer: 2 },
+{ q: "¿Qué estrategia busca<br>fortalecer EE.UU.<br>en su territorio?", options: ["Turismo", "Fabricación local de semiconductores", "Agricultura sostenible", "Producción de acero"], answer: 1 },
+{ q: "¿Por qué los chips son<br>considerados 'el nuevo petróleo'?", options: ["Son inflamables", "Son escasos y críticos para la economía moderna", "Son muy baratos", "Se utilizan en la industria textil"], answer: 1 },
+{ q: "¿Qué suceso puede afectar<br>gravemente la producción<br>mundial de chips?", options: ["Caída de Facebook", "Invasión de Taiwán", "Cierre de Wall Street", "Crisis del euro"], answer: 1 },
+{ q: "¿Qué empresa de EE.UU.<br>es clave en diseño<br>de chips pero no en fabricación?", options: ["NVIDIA", "General Motors", "Amazon", "Walmart"], answer: 0 },
+{ q: "¿Qué infraestructura natural<br>hace vulnerable<br>a Taiwán?", options: ["Zonas volcánicas", "Sequías", "Terremotos", "Tornados"], answer: 2 },
+{ q: "¿Cuál es uno de los materiales<br>críticos en la producción<br>de chips?", options: ["Litio", "Silicio", "Cobre", "Hierro"], answer: 1 },
+{ q: "¿Qué política impulsa<br>EE.UU. para la industria<br>de chips?", options: ["Ley de Chips", "Green New Deal", "Ley de Internet Seguro", "Patriot Act"], answer: 0 },
+{ q: "¿Qué industria depende<br>fuertemente de los<br>semiconductores?", options: ["Textil", "Automotriz", "Agricultura", "Construcción"], answer: 1 },
+{ q: "¿Qué país invierte grandes sumas<br>en fábricas de chips locales,<br>aparte de EE.UU.?", options: ["Alemania", "Brasil", "Sudáfrica", "Perú"], answer: 0 },
+{ q: "¿Qué factor agrava<br>la 'guerra de los chips'?", options: ["Cambio climático", "Aumento del consumo global de dispositivos electrónicos", "Caída del petróleo", "Crisis migratoria"], answer: 1 }
+
     ];
 
     const chineseCharacters = ["台灣", "中國", "美國", "半導體", "電子", "科技", "革命", "創新", "未來", "世界"];
@@ -217,27 +219,27 @@ T        S    M  M  M  C
       const div = document.createElement("div");
       div.className = "question";
       div.innerHTML = `
-      <p style="white-space: normal; word-wrap: break-word; animation: questionTyping 3s steps(30) 1s 1 normal both;">
-        ${index + 1}. ${q.q}
-      </p>` +
-      q.options.map((opt, i) => `
-        <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
-      `).join("") +
-      `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`;
+        <p style="white-space: nowrap; overflow: hidden; animation: questionTyping 3s steps(30) 1s 1 normal both;">
+          ${index + 1}. ${q.q}
+        </p>` +
+        q.options.map((opt, i) => `
+          <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
+        `).join("") +
+        `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`;
       quizDiv.appendChild(div);
 
       nextBtn.disabled = true;
 
       const radios = document.getElementsByName(`q${index}`);
       radios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        nextBtn.disabled = false;
-      });
+        radio.addEventListener('change', () => {
+          nextBtn.disabled = false;
+        });
       });
 
       setTimeout(() => {
-      div.style.opacity = 1;
-      div.style.transform = 'translateY(0)';
+        div.style.opacity = 1;
+        div.style.transform = 'translateY(0)';
       }, 300);
     }
 
