@@ -171,7 +171,7 @@ T        S    M  M  M  C
 { q: "¿Qué significa 'foundry'<br>en el contexto<br>de chips?", options: ["Diseñador de software", "Fábrica que diseña y fabrica chips", "Fábrica que solo fabrica chips para terceros", "Empresa de energías renovables"], answer: 2 },
 { q: "¿Qué conflicto agrava<br>la preocupación<br>por los microchips?", options: ["Guerra comercial EE.UU.-China", "Brexit", "Cambio climático", "Deuda externa"], answer: 0 },
 { q: "¿Qué tipo de chips<br>fabrica TSMC?", options: ["Chips para impresoras", "Chips de baja tecnología", "Chips de alta tecnología", "Chips militares exclusivamente"], answer: 2 },
-{ q: "¿Qué empresa de EEE.UU.<br>depende de los<br>chips de TSMC?", options: ["Meta", "Tesla", "Apple", "Netflix"], answer: 2 },
+{ q: "¿Qué empresa de EE.UU.<br>depende de los<br>chips de TSMC?", options: ["Meta", "Tesla", "Apple", "Netflix"], answer: 2 },
 { q: "¿Cuál es la estrategia<br>de EE.UU. para reducir<br>su dependencia?", options: ["Exportar más petróleo", "Nacionalizar TSMC", "Invertir en producción local de chips", "Prohibir el uso de chips"], answer: 2 },
 { q: "¿Dónde está<br>ubicada TSMC?", options: ["Beijing", "Seúl", "Taipei", "Shanghai"], answer: 2 },
 { q: "¿Qué país considera<br>estratégicos los chips<br>para su seguridad nacional?", options: ["México", "Australia", "Estados Unidos", "Canadá"], answer: 2 },
@@ -265,10 +265,10 @@ T        S    M  M  M  C
           correct++;
         }
       });
-      if (correct >= 7) {
+      if (correct >= 10) {
         resultDiv.innerHTML = `✨ ¡Felicitaciones! Tu contraseña es: <strong>PREMIO2025</strong>`;
       } else {
-        resultDiv.innerHTML = `❌ Lo siento, necesitas al menos 7 respuestas correctas. Intentá de nuevo.`;
+        resultDiv.innerHTML = `❌ Lo siento, necesitas al menos 10 respuestas correctas. Intentá de nuevo.`;
       }
       resultDiv.classList.remove("hidden");
     }
