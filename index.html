@@ -210,13 +210,14 @@ T        S    M  M  M  C
       const randomIndex = Math.floor(Math.random() * chineseCharacters.length);
       return chineseCharacters[randomIndex];
     }
+
     function showQuestion(index) {
       quizDiv.innerHTML = ''; 
       const q = shuffledQuestions[index];
       const div = document.createElement("div");
       div.className = "question";
       div.innerHTML = `
-      <p style="white-space: normal; word-wrap: break-word; overflow: hidden; animation: questionTyping 3s steps(30) 1s 1 normal both;">
+      <p style="white-space: normal; word-wrap: break-word; animation: questionTyping 3s steps(30) 1s 1 normal both;">
         ${index + 1}. ${q.q}
       </p>` +
       q.options.map((opt, i) => `
@@ -237,35 +238,6 @@ T        S    M  M  M  C
       setTimeout(() => {
       div.style.opacity = 1;
       div.style.transform = 'translateY(0)';
-      }, 300);
-    }
-    function showQuestion(index) {
-      quizDiv.innerHTML = ''; 
-      const q = shuffledQuestions[index];
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `
-        <p style="white-space: nowrap; overflow: hidden; animation: questionTyping 3s steps(30) 1s 1 normal both;">
-          ${index + 1}. ${q.q}
-        </p>` +
-        q.options.map((opt, i) => `
-          <label><input type="radio" name="q${index}" value="${i}"> ${opt}</label><br>
-        `).join("") +
-        `<div class="chinese-characters">${getRandomChineseCharacters()}</div>`;
-      quizDiv.appendChild(div);
-
-      nextBtn.disabled = true;
-
-      const radios = document.getElementsByName(`q${index}`);
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          nextBtn.disabled = false;
-        });
-      });
-
-      setTimeout(() => {
-        div.style.opacity = 1;
-        div.style.transform = 'translateY(0)';
       }, 300);
     }
 
